@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 class PetTheme {
   static final light = _lightTheme.copyWith(
-      appBarTheme: _appBarTheme,
-      colorScheme: _colorScheme,
-      sliderTheme: _sliderTheme,
-      iconTheme: _iconTheme,
-      inputDecorationTheme: _inputDecorationTheme,
-      scaffoldBackgroundColor: Colors.white,
-      expansionTileTheme: _expansionTileTheme);
+    appBarTheme: _appBarTheme,
+    colorScheme: _colorScheme,
+    sliderTheme: _sliderTheme,
+    iconTheme: _iconTheme,
+    inputDecorationTheme: _inputDecorationTheme,
+    scaffoldBackgroundColor: Colors.white,
+    expansionTileTheme: _expansionTileTheme,
+    elevatedButtonTheme: ElevatedButtonThemeData(style: _elevatedButtonTheme),
+  );
 
   static final _lightTheme = ThemeData.light();
 
@@ -55,4 +57,11 @@ class PetTheme {
       collapsedTextColor: Colors.black,
       iconColor: Colors.orange,
       textColor: Colors.orange);
+
+  static final _elevatedButtonTheme = ElevatedButton.styleFrom(
+      backgroundColor: Colors.orange,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ));
 }

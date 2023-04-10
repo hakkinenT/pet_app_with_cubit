@@ -31,20 +31,23 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: onChanged,
-      autofocus: autofocus,
-      onFieldSubmitted: onFieldSubmitted,
-      validator: validator,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      textInputAction: textInputAction,
-      keyboardType: keyboardType,
-      inputFormatters: inputFormatters,
-      focusNode: focusNode,
-      onTapOutside: onTapOutside,
-      decoration: InputDecoration(
-        hintText: hintText,
-        errorText: errorText,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextFormField(
+        onChanged: onChanged,
+        autofocus: autofocus,
+        onFieldSubmitted: onFieldSubmitted,
+        validator: validator,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        textInputAction: textInputAction,
+        keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
+        focusNode: focusNode,
+        onTapOutside: onTapOutside,
+        decoration: InputDecoration(
+          hintText: hintText,
+          errorText: errorText,
+        ),
       ),
     );
   }

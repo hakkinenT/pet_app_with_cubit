@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_app_with_cubit/data/models/type_animal.dart';
+
+import '../../../data/models/type_animal.dart';
 
 class CustomDropdownFormField extends StatelessWidget {
   const CustomDropdownFormField({
@@ -25,6 +26,7 @@ class CustomDropdownFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(minHeight: 52, maxHeight: 75),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: DropdownButtonFormField<TypeAnimal>(
         value: value,
         hint: hintText,

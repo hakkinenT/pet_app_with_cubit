@@ -14,12 +14,15 @@ class AgeSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Slider(
-      value: value,
-      max: 40,
-      divisions: 40,
-      label: value.round().toString(),
-      onChanged: onChanged,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      child: Slider(
+        value: value,
+        max: 40,
+        divisions: 40,
+        label: value.round().toString(),
+        onChanged: onChanged,
+      ),
     );
   }
 }

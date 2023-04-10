@@ -7,9 +7,12 @@ class FormLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      label,
-      style: Theme.of(context).textTheme.titleMedium,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Text(
+        label,
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
     );
   }
 }

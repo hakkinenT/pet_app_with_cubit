@@ -93,6 +93,7 @@ class FormValidationCubit extends Cubit<FormValidationState> {
       state.copyWith(
           ageInput: const AgeInput(value: 0),
           genderInput: const GenderInput(value: Gender.empty),
+          typeAnimal: const TypeAnimal(),
           hasError: false),
     );
   }

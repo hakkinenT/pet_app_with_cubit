@@ -1,8 +1,7 @@
-import 'package:pet_app_with_cubit/data/models/type_animal.dart';
-
 import '../../utils/constants/constants.dart';
+import '../models/type_animal.dart';
 
-final petTypeData = <TypeAnimal>[
+final typeAnimalData = <TypeAnimal>[
   const TypeAnimal(animal: "Cachorro", imageUrl: dog),
   const TypeAnimal(animal: "Gato", imageUrl: cat),
   const TypeAnimal(animal: "Cavalo", imageUrl: horse),

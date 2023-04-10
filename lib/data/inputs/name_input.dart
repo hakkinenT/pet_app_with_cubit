@@ -1,4 +1,4 @@
-import 'package:pet_app_with_cubit/validator/form_input.dart';
+import '../../validator/form_input.dart';
 
 class NameInput extends FormInput<String, String> {
   const NameInput({required super.value});

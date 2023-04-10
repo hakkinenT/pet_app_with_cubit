@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_app_with_cubit/cubit/form_validation_cubit.dart';
-import 'package:pet_app_with_cubit/pages/register_pet/widgets/type_animal_drop_down.dart';
 
+import '../../cubit/form_validation_cubit.dart';
 import '../../data/enum/gender.dart';
 import 'widgets/age_slider.dart';
 import 'widgets/custom_elevated_button.dart';
@@ -11,6 +10,7 @@ import 'widgets/error_message.dart';
 import 'widgets/female_option.dart';
 import 'widgets/male_option.dart';
 import 'widgets/pet_form_field.dart';
+import 'widgets/type_animal_drop_down.dart';
 
 class RegisterPetPage extends StatelessWidget {
   const RegisterPetPage({super.key});
@@ -67,7 +67,7 @@ class _RegisterPetViewState extends State<RegisterPetView> {
             formValidationCubit.checkFormError();
           },
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -260,7 +260,10 @@ class RegisterButton extends StatelessWidget {
               : null,
           child: state.status.isInProgress
               ? const CircularProgressIndicator()
-              : const Text("Cadastrar"),
+              : Text(
+                  "Cadastrar",
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
         );
       },
     );

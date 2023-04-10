@@ -8,7 +8,7 @@ class ErrorMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 8.0, left: 10, bottom: 16.0),
+      margin: const EdgeInsets.only(top: 8.0, left: 35, bottom: 16.0),
       child: Text(
         message,
         style: Theme.of(context).textTheme.labelMedium!.copyWith(

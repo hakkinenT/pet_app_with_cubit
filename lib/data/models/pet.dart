@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:pet_app_with_cubit/data/models/type_animal.dart';
 
 import '../enum/gender.dart';
+import 'type_animal.dart';
 
 class Pet extends Equatable {
   final String name;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'expansion_tile_content_item.dart';
 
-class PetTypeInfo extends StatelessWidget {
-  const PetTypeInfo({
+class TypeAnimalInfo extends StatelessWidget {
+  const TypeAnimalInfo({
     super.key,
     required this.petType,
   });

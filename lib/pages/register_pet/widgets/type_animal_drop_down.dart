@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pet_app_with_cubit/pages/register_pet/widgets/custom_drop_down_form_field.dart';
 
-import '../../../data/constants/pet_type_data.dart';
+import '../../../data/constants/type_animal_data.dart';
 import '../../../data/models/type_animal.dart';
+import 'custom_drop_down_form_field.dart';
 
 class TypeAnimalDropdown extends StatefulWidget {
   final TypeAnimal? value;
@@ -26,10 +25,10 @@ class TypeAnimalDropdown extends StatefulWidget {
 
 class _TypeAnimalDropdownState extends State<TypeAnimalDropdown> {
   final items = List<DropdownMenuItem<TypeAnimal>>.generate(
-    petTypeData.length,
+    typeAnimalData.length,
     (index) => DropdownMenuItem<TypeAnimal>(
-      value: petTypeData[index],
-      child: Text(petTypeData[index].animal),
+      value: typeAnimalData[index],
+      child: Text(typeAnimalData[index].animal),
     ),
   );
 

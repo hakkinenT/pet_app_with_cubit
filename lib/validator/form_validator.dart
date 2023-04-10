@@ -1,5 +1,4 @@
-import 'package:pet_app_with_cubit/validator/enum/form_status.dart';
-
+import 'enum/form_status.dart';
 import 'form_input.dart';
 
 class FormValidator {

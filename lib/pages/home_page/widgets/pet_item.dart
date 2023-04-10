@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pet_app_with_cubit/utils/constants/constants.dart';
 
 import '../../../data/models/pet.dart';
 import 'pet_age_info.dart';
 import 'pet_gender_info.dart';
-import 'pet_type_info.dart';
+import 'type_animal_info.dart';
 
 class PetItem extends StatelessWidget {
   const PetItem({
@@ -39,7 +38,7 @@ class PetItem extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        PetTypeInfo(petType: pet.type.animal),
+        TypeAnimalInfo(petType: pet.type.animal),
       ],
     );
   }

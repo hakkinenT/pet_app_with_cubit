@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pet_app_with_cubit/utils/constants/constants.dart';
 
 import '../../cubit/form_validation_cubit.dart';
+import '../../utils/constants/constants.dart';
 import '../register_pet/register_pet_page.dart';
 import '../register_pet/widgets/custom_text_form_field.dart';
 import 'widgets/pet_item.dart';
@@ -53,16 +53,13 @@ class SearchFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: BlocBuilder<FormValidationCubit, FormValidationState>(
-        builder: (context, state) {
-          return CustomTextFormField(
-            onChanged: BlocProvider.of<FormValidationCubit>(context).filterPets,
-            hintText: "Pesquisar...",
-          );
-        },
-      ),
+    return BlocBuilder<FormValidationCubit, FormValidationState>(
+      builder: (context, state) {
+        return CustomTextFormField(
+          onChanged: BlocProvider.of<FormValidationCubit>(context).filterPets,
+          hintText: "Pesquisar...",
+        );
+      },
     );
   }
 }
