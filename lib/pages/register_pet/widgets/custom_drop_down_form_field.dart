@@ -31,13 +31,8 @@ class CustomDropdownFormField extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         focusNode: focusNode,
         decoration: InputDecoration(
-            errorText: errorText,
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-            contentPadding: const EdgeInsets.all(16)),
+          errorText: errorText,
+        ),
         items: items,
         validator: validator,
         onChanged: onChanged,

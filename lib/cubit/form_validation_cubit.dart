@@ -1,14 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:pet_app_with_cubit/data/enum/gender.dart';
 
-import 'package:pet_app_with_cubit/data/inputs/age_input.dart';
-import 'package:pet_app_with_cubit/data/inputs/gender_input.dart';
-import 'package:pet_app_with_cubit/data/inputs/name_input.dart';
-import 'package:pet_app_with_cubit/data/inputs/pet_type_input.dart';
-import 'package:pet_app_with_cubit/validator/enum/form_status.dart';
-import 'package:pet_app_with_cubit/validator/form_validator.dart';
-
+import '../data/enum/gender.dart';
+import '../data/inputs/age_input.dart';
+import '../data/inputs/gender_input.dart';
+import '../data/inputs/name_input.dart';
+import '../validator/enum/form_status.dart';
+import '../validator/form_validator.dart';
 import '../data/models/pet.dart';
 import '../data/models/type_animal.dart';
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_app_with_cubit/utils/constants/constants.dart';
 
 import '../../cubit/form_validation_cubit.dart';
 import '../register_pet/register_pet_page.dart';
@@ -37,7 +39,10 @@ class HomePage extends StatelessWidget {
             ),
           );
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
       ),
     );
   }
@@ -97,8 +102,27 @@ class EmptyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("A lista está vazia"),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AspectRatio(
+            aspectRatio: 1 / 1,
+            child: SvgPicture.asset(
+              emptyList,
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          const Text(
+            "Não há nada aqui. \nClique em + e cadastre um pet.",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+          )
+        ],
+      ),
     );
   }
 }

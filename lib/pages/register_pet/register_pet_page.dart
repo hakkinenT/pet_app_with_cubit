@@ -4,11 +4,12 @@ import 'package:pet_app_with_cubit/cubit/form_validation_cubit.dart';
 import 'package:pet_app_with_cubit/pages/register_pet/widgets/type_animal_drop_down.dart';
 
 import '../../data/enum/gender.dart';
-import 'widgets/custom_drop_down_form_field.dart';
+import 'widgets/age_slider.dart';
 import 'widgets/custom_elevated_button.dart';
 import 'widgets/custom_text_form_field.dart';
 import 'widgets/error_message.dart';
-import 'widgets/form_label.dart';
+import 'widgets/female_option.dart';
+import 'widgets/male_option.dart';
 import 'widgets/pet_form_field.dart';
 
 class RegisterPetPage extends StatelessWidget {
@@ -55,23 +56,10 @@ class _RegisterPetViewState extends State<RegisterPetView> {
       body: BlocListener<FormValidationCubit, FormValidationState>(
         listener: (context, state) {
           if (state.status.isSuccess) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar
-              ..showSnackBar(
-                const SnackBar(
-                  content: Text("Pet adicionado com sucesso"),
-                ),
-              );
-            Navigator.pop(context);
+            _showSnackBar(context, "Pet adicionado com sucesso!", Colors.green);
           } else if (state.status.isFailure) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar
-              ..showSnackBar(
-                const SnackBar(
-                  content: Text("Houve um erro"),
-                ),
-              );
-            Navigator.pop(context);
+            _showSnackBar(
+                context, "Houve um erro ao adicionar o Pet!", Colors.red);
           }
         },
         child: GestureDetector(
@@ -93,7 +81,7 @@ class _RegisterPetViewState extends State<RegisterPetView> {
                 const PetFormField(
                   label: "Idade",
                   field: [
-                    AgeSlider(),
+                    AgeField(),
                   ],
                 ),
                 fieldSpacing,
@@ -123,6 +111,19 @@ class _RegisterPetViewState extends State<RegisterPetView> {
   final SizedBox fieldSpacing = const SizedBox(
     height: 16,
   );
+
+  _showSnackBar(BuildContext context, String message,
+      [Color? backgroundColor]) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar
+      ..showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: backgroundColor,
+        ),
+      );
+    Navigator.pop(context);
+  }
 }
 
 class NameField extends StatelessWidget {
@@ -153,8 +154,8 @@ class NameField extends StatelessWidget {
   }
 }
 
-class AgeSlider extends StatelessWidget {
-  const AgeSlider({super.key});
+class AgeField extends StatelessWidget {
+  const AgeField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -162,18 +163,20 @@ class AgeSlider extends StatelessWidget {
 
     return BlocBuilder<FormValidationCubit, FormValidationState>(
       builder: (context, state) {
+        final ageInput = state.ageInput;
+        final age = ageInput.value;
+        final hasError = state.hasError;
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Slider(
-              value: state.ageInput.value,
-              max: 40,
-              divisions: 40,
-              label: state.ageInput.value.round().toString(),
+            AgeSlider(
+              value: age,
+              label: age,
               onChanged: cubit.onAgeChanged,
             ),
-            if (state.hasError && state.ageInput.error != null)
-              ErrorMessage(message: state.ageInput.error!)
+            if (hasError && ageInput.error != null)
+              ErrorMessage(message: ageInput.error!)
           ],
         );
       },
@@ -190,25 +193,27 @@ class GenderOption extends StatelessWidget {
 
     return BlocBuilder<FormValidationCubit, FormValidationState>(
       builder: (context, state) {
+        final genderInput = state.genderInput;
+        final groupValue = genderInput.value;
+        final hasError = state.hasError;
+
+        genderChanged(Gender? gender) {
+          if (gender != null) cubit.onGenderChanged(gender);
+        }
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RadioListTile<Gender>(
-                title: const Text("Fêmea"),
-                value: Gender.female,
-                groupValue: state.genderInput.value,
-                onChanged: (gender) {
-                  if (gender != null) cubit.onGenderChanged(gender);
-                }),
-            RadioListTile<Gender>(
-                title: const Text("Macho"),
-                value: Gender.male,
-                groupValue: state.genderInput.value,
-                onChanged: (gender) {
-                  if (gender != null) cubit.onGenderChanged(gender);
-                }),
-            if (state.hasError && state.genderInput.error != null)
-              ErrorMessage(message: state.genderInput.error!)
+            FemaleOption(
+              groupValue: groupValue,
+              onChanged: genderChanged,
+            ),
+            MaleOption(
+              groupValue: groupValue,
+              onChanged: genderChanged,
+            ),
+            if (hasError && genderInput.error != null)
+              ErrorMessage(message: genderInput.error!)
           ],
         );
       },
